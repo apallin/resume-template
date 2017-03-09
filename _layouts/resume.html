@@ -27,7 +27,7 @@
         </div>
 
         <div class="executive-summary" itemprop="description">
-          <p>This is the executive summary. You should write a few brief, concise, and meaningful sentences about yourself from a professional context, and your immediate career goals. Make the length appropriate for your needs, but K.I.S.S.</p>
+          <p>{{ site.resume_description }}</p>
         </div>
 
         {% if site.resume_looking_for_work == 'yes' %}
@@ -36,6 +36,8 @@
         <a class="contact-button not-looking">I'm not looking for work right now.</a>
         {% else %}
         {% endif %}
+
+        <a href="resume.pdf" class="contact-button" download="resume.pdf"> <i class="fa fa-download"></i>Download Resume</a>
 
       </header>
 
@@ -78,6 +80,23 @@
       <!-- end Education -->
       {% endif %}
 
+      {% if site.resume_section_skills %}
+      <!-- begin Skills -->
+      <section class="content-section">
+
+        <header class="section-header">
+          <h2>Skills</h2>
+        </header>
+        {% for skill in site.data.skills %}
+        <div class="resume-item">
+          <h4 class="resume-item-details">{{ skill.skill }}</h4>
+          <p class="resume-item-copy">{{ skill.description }}</p>
+        </div>
+        {% endfor %}
+        
+      </section>
+      <!-- end Skills -->
+      {% endif %}
 
       {% if site.resume_section_projects %}
       <!-- begin Projects -->
@@ -96,24 +115,6 @@
         
       </section>
       <!-- end Projects -->
-      {% endif %}
-
-      {% if site.resume_section_skills %}
-      <!-- begin Skills -->
-      <section class="content-section">
-
-        <header class="section-header">
-          <h2>Skills</h2>
-        </header>
-        {% for skill in site.data.skills %}
-        <div class="resume-item">
-          <h4 class="resume-item-details">{{ skill.skill }}</h4>
-          <p class="resume-item-copy">{{ skill.description }}</p>
-        </div>
-        {% endfor %}
-        
-      </section>
-      <!-- end Skills -->
       {% endif %}
 
       {% if site.resume_section_recognition %}
